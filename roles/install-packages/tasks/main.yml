@@ -1,0 +1,10 @@
+---
+- name: Update all packages
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Install listed packages
+  dnf:
+    name: "{{ packages_to_install }}"
+    state: present

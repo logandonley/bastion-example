@@ -1,0 +1,20 @@
+---
+- name: Run the datasources.yml template
+  template:
+    src: datasources.yml.j2
+    dest: "/home/{{ user }}/datasources.yml"
+    mode: 0755
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Run the Grafana Docker container
+  docker_container:
+    name: grafana
+    image: "{{ grafana_image }}:{{ grafana_image_version }}"
+    published_ports:
+    - "{{ grafana_port }}:3000"
+    volumes:
+    - "/home/{{ user }}/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml:Z"
+    env:
+      GF_SECURITY_ADMIN_PASSWORD: "{{ grafana_password }}"
+    state: started

@@ -1,0 +1,25 @@
+---
+# All of the packages to get installed via 'dnf' command
+packages_to_install:
+  - zsh # My preferred shell
+  - git # For source control
+  - x2goserver # Will be used for remote desktoping
+  - '@xfce' # Installing a desktop environment for remote desktoping
+  - firefox # Browser doesn't come by default with the server os
+  - tilix # Installing a better terminal emulator
+  - ack # Awesome code searching tool
+  - docker # Always useful to have docker on any host
+  - docker-compose
+  - python3
+  - python3-pip
+  - golang
+  - libselinux-python
+  - ansible
+  - vim
+
+# User to configure everything to
+user: myuser
+
+# Setup docker
+setup_docker: True
+setup_monitoring: True

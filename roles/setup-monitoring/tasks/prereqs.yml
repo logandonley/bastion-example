@@ -1,0 +1,10 @@
+---
+- name: Install prereqs
+  dnf:
+    name: "python-pip"
+    state: present
+
+- name: Install pip libraries
+  pip:
+    name: "docker-py"
+    state: present

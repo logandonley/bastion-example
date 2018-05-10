@@ -1,0 +1,12 @@
+---
+# - name: Install prereqs
+#   import_tasks: prereqs.yml
+
+- name: Setup Node Exporter
+  import_tasks: setup-node-exporter.yml
+
+- name: Setup Prometheus
+  import_tasks: setup-prometheus.yml
+
+- name: Setup Grafana
+  import_tasks: setup-grafana.yml

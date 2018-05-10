@@ -1,0 +1,8 @@
+---
+- name: Setup bastion host
+  become: True
+  hosts: bastion
+  roles:
+    - role: install-packages
+    - role: setup-docker
+    - role: setup-monitoring

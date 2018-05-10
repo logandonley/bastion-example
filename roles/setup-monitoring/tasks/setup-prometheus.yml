@@ -1,0 +1,20 @@
+---
+- name: Run the prometheus.yml template
+  template:
+    src: prometheus.yml.j2
+    dest: "/home/{{ user }}/prometheus.yml"
+    mode: 0755
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  vars:
+    target_nodes: "{{ groups['bastion'] }}"
+
+- name: Run Prometheus Docker container
+  docker_container:
+    name: prometheus
+    image: "{{ prometheus_image }}:{{ prometheus_image_version }}"
+    published_ports:
+    - "{{ prometheus_port }}:9090"
+    volumes:
+    - "/home/{{ user }}/prometheus.yml:/etc/prometheus/prometheus.yml:Z"
+    state: started
