@@ -5,4 +5,6 @@
   roles:
     - role: install-packages
     - role: setup-docker
+      when: setup_docker == True
     - role: setup-monitoring
+      when: setup_monitoring == True
